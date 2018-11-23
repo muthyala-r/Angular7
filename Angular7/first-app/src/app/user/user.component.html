@@ -1,0 +1,27 @@
+<!-- <p>
+  user works!
+</p> -->
+
+<label for="userName">
+  User Details.
+</label>
+<input type="text" 
+      class="form-control"
+      (input)="onUpdateUserName($event)">
+<!-- <input type="text" 
+       class="form-control"
+       [(ngModel)] ="userName"> -->
+<button class="btn btn-primary" 
+[disabled]="!allowNewUser"
+(click)="onClick()">
+AddNewUser
+</button>
+{{userName}}
+<!-- <p>{{userStatus}} - {{userName}}</p>-->
+<p *ngIf="userCreated; else createStatus">Uesr created</p>
+<ng-template #createStatus>
+  {{userStatus}}
+</ng-template>
+<p *ngFor="let user of users">
+  {{user}}
+</p>

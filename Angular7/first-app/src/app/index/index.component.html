@@ -1,0 +1,12 @@
+<button class="btn btn-primary" 
+            (click)="onTogglDetails()">
+            display button
+         
+</button>
+<div *ngFor="let logItem of log ; let i = index"
+      [ngStyle]="{backgroundColor : i%2 === 0 ? 'green' : 'red'}"
+      (mouseover)="onTogglDetails()">
+   {{i}}: {{ logItem }}
+ </div> 
+
+
