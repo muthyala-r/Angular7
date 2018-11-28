@@ -1,0 +1,9 @@
+<!-- <p>
+  first-form works!
+</p>
+ -->
+ <input type="text" [(ngModel)]="userName">
+ <button  class="btn btn-primary" 
+          [disabled]="userName === '' " 
+          (click)="onClick()">AddUser</button>
+ {{userName}}
