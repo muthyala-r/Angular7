@@ -1,19 +1,64 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form>
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="singnupForm" (ngSubmit)="onSubmit()">
+        <div formGroupName="userData">
         <div class="form-group">
           <label for="username">Username</label>
-          <input type="text" id="username" class="form-control">
+          <input type="text" 
+                 id="username" 
+                 class="form-control"
+                 formControlName="username">
+          <span class="help-block"
+                *ngIf="!singnupForm.get('userData.username').valid 
+                       && singnupForm.get('userData.username').touched
+                       && !singnupForm.get('userData.username').untouched">
+                      Please enter the Username
+                      </span>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" class="form-control">
+          <input type="email" 
+                 id="email" 
+                 class="form-control"
+                 formControlName="email">
+                 <span class="help-block"
+                 *ngIf="!singnupForm.get('userData.email').valid 
+                        && singnupForm.get('userData.email').touched
+                        ">
+                       Please enter the email
+                       </span>
         </div>
+        
+      </div>
         <div class="radio" *ngFor="let gender of genders">
           <label for="gender">
-            <input type="radio" [value]="gender">{{ gender }}
+            <input name="genderName" 
+                   type="radio" 
+                   [value]="gender"
+                   formControlName="genderName">{{ gender }}
           </label>
+        </div>
+        <div formArrayName="hobbies">
+         <h4>Your hobbies</h4>
+         <br>
+         <button class="btn btn-primary" 
+                 (click)="onAddHobby()">
+                Add Hobby
+                </button>
+          <br>
+          <div class="form-group"
+               *ngFor="let hobbyControl of singnupForm.get('hobbies').controls; 
+                       let i=index">
+            <input type="text" 
+                   class="form-control" 
+                   [formControlName]="i">
+              <span class="help-block"
+                    *ngIf="hobbyControl.invalid && hobbyControl.touched">
+                  Please enter the value
+                  </span>
+                   
+          </div>      
         </div>
         <button class="btn btn-success" type="submit">Submit</button>
       </form>
@@ -22,5 +67,5 @@
 </div>
 <br>
 <hr>
-<app-pipes></app-pipes>
+<app-pipes></app-pipes> -->
 <app-http-request></app-http-request>

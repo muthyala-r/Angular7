@@ -5,7 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { HttpRequestComponent } from './http-request/http-request.component';
-
+import {ReactiveFormsModule} from '@angular/forms'
+import { ServersService } from './http-request/servers.service';
+import { HttpModule } from '@angular/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,9 +16,11 @@ import { HttpRequestComponent } from './http-request/http-request.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [ServersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

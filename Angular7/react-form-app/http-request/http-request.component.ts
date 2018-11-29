@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServersService } from './servers.service';
 
 @Component({
   selector: 'app-http-request',
@@ -19,7 +20,7 @@ export class HttpRequestComponent implements OnInit {
       id:this.generateId()
     }
   ];
-  constructor() { }
+  constructor(private serversService : ServersService) { }
 
   ngOnInit() {
   }
@@ -36,6 +37,20 @@ export class HttpRequestComponent implements OnInit {
           id:this.generateId()
         }
       );
+  }
+
+  onSave(){
+     this.serversService.saveServers(this.servers)
+     .subscribe(
+       (response) => console.log(response),
+       (error) => console.log(error)      
+     );
+  }
+  onRecive(){
+
+  }
+  onUpdate(){
+
   }
 
 }
