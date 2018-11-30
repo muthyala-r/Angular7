@@ -47,7 +47,14 @@ export class HttpRequestComponent implements OnInit {
      );
   }
   onRecive(){
-
+    this.serversService.getServersDetails()
+    .subscribe(
+      (serverData :any) => {
+        //this.servers = serverData;
+        console.log(serverData)
+      },
+      (errorInfo )=>{console.log(errorInfo);}
+      );
   }
   onUpdate(){
 
