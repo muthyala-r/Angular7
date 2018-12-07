@@ -10,6 +10,17 @@ import { ServerComponent } from './servers/server/server.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { DropdownDirective } from './shared/dropdown.directive';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
+import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { ServersService } from './servers/servers.service';
+import { DataStorageService } from './shared/data-storage.service';
+import { AuthInterceptor } from './auth/auth-intercepter';
+import { AnimationComponent } from './animation/animation.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 //localhost:4200
 //localhost:4200/servers
 //localhost:4200/users
@@ -33,14 +44,23 @@ import { AppRoutingModule } from './app-routing.module';
     UsersComponent,
     ServersComponent,
     ServerComponent,
-    EditServerComponent
+    EditServerComponent,
+    SigninComponent,
+    SignupComponent,
+    DropdownDirective,
+    AnimationComponent
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule ,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AuthGuard,AuthService,ServersService,
+  DataStorageService,
+  {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
