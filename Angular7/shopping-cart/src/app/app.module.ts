@@ -24,6 +24,9 @@ import { ProductQuantityComponent } from './shared/product-quantity/product-quan
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
+import { FormsModule } from '@angular/forms';
+import { ProductService } from './shared/services/product.service';
+import { CategoryService } from './shared/services/category.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,9 +53,10 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ProductService,CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

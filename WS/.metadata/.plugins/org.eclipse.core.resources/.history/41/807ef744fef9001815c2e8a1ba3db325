@@ -1,0 +1,7 @@
+package com.shopping.model;
+
+@Entity
+@Table(name="category")
+public class Category {
+
+}

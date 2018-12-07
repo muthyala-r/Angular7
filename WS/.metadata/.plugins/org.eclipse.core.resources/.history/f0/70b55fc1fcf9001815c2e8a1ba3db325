@@ -1,0 +1,4 @@
+spring.datasource.url=jdbc:mysql://localhost:3306/shopping?useSSL=false
+spring.datasource.username=root
+spring.datasource.password=raju
+spring.jpa.generate-ddl=true
